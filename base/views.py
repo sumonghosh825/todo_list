@@ -95,4 +95,6 @@ def auth_login(request):
             return redirect('auth_login')
 
     return render(request, 'profile/profile.html') 
+def abc(request):
+    return render("")
 

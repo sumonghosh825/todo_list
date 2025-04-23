@@ -1,147 +1,103 @@
-# 📝 Django Task Management App
 
-This is a full-featured task management system built using Django. It includes user registration and login, profile management, security settings, and task operations categorized by status and type.
+# 🧾 To-Do List Web Application – User Manual
 
----
-
-## 🚀 Features
-
-- User registration with validation
-- Login using username or email
-- Profile management (with editable fields)
-- Task creation, update, deletion
-- Filter tasks by category and status
-- Security settings (email & password update)
-- Simple UI integration with Django templates
-- Built-in session handling using Django's `@login_required` decorators
+Welcome to the To-Do List Web App! This guide will walk you through all the features and how to use them.
 
 ---
 
-## 🛠️ Tech Stack
-
-- **Backend**: Django
-- **Database**: SQLite (default Django)
-- **Frontend**: HTML/CSS (Django templating)
-- **Authentication**: Django's `auth` system
-
----
-
-## 📁 Project Structure
-
-todo_project/
-├── manage.py
-├── db.sqlite3
-├── requirements.txt
-├── README.md
-├── .gitignore
-│
-├── todo_project/                     # Main Django project config
-│   ├── __init__.py
-│   ├── settings.py
-│   ├── urls.py                       # Include your app URLs here
-│   ├── wsgi.py
-│   └── asgi.py
-│
-├── todo_app/                         # Your main app for todo management
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── models.py                     # UserProfile, Task models
-│   ├── views.py                      # All your views: auth, tasks, profile, etc.
-│   ├── forms.py                      # Django Forms for login, profile, task
-│   ├── urls.py                       # The one you showed me
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── home.html
-│   │   ├── register.html
-│   │   ├── login.html
-│   │   ├── profile/
-│   │   │   ├── profile.html
-│   │   │   └── update_form.html
-│   │   ├── security/
-│   │   │   ├── security.html
-│   │   │   └── update_form.html
-│   │   └── tasks/
-│   │       ├── tasks.html
-│   │       ├── add_task.html
-│   │       ├── edit_task.html
-│   │       └── task_list_partial.html  # AJAX task list load
-│   ├── static/
-│   │   ├── css/
-│   │   │   └── style.css
-│   │   ├── js/
-│   │   │   └── tasks.js                # Optional AJAX logic
-│   │   └── images/
-│   └── migrations/
-│       └── __init__.py
-
-
+## 📌 Features Overview
+- ✅ **User Registration & Login**
+- 👤 **Profile Management**
+- 🔐 **Account Security Settings**
+- 🗂️ **Task Management (Add, Edit, Delete)**
+- 📂 **Filter Tasks by Category or Status**
 
 ---
 
-## 🔐 User Authentication Routes
+## 🚀 Getting Started
 
-| URL | View Function | Description |
-|-----|----------------|-------------|
-| `/register/` | `register` | User signup (Note: Plain-text password, insecure for production) |
-| `/login/` | `user_login` | Login using username or email |
-| `/logout/` | `user_logout` | Logout the current user |
+### 1. **Visit the Home Page**
+URL: `http://localhost:8000/`
 
----
-
-## 👤 Profile & Security Routes
-
-| URL | View Function | Description |
-|-----|----------------|-------------|
-| `/profile/` | `profile` | Show and edit user profile |
-| `/load_profile_content/` | `load_profile_content` | Loads profile content via AJAX |
-| `/update_profile/` | `update_profile` | Updates profile fields |
-| `/load_security_content/` | `load_security_content` | Loads email/password change form |
-| `/update_security/` | `update_security` | Updates user's email and password |
+From the home page, you can:
+- Register for a new account
+- Login if you already have one
 
 ---
 
-## ✅ Task Management Routes
+## 👥 User Authentication
 
-| URL | View Function | Description |
-|-----|----------------|-------------|
-| `/tasks/` | `task_management` | Shows all tasks created by the user |
-| `/tasks/add/` | `add_task` | Add a new task |
-| `/tasks/edit/<int:task_id>/` | `edit_task` | Edit an existing task |
-| `/tasks/delete/<int:task_id>/` | `delete_task` | Delete a task |
-| `/tasks/load/<str:category>/` | `load_tasks_by_category` | Filter tasks by category |
-| `/tasks/status/<str:status>/` | `load_tasks_by_status` | Filter tasks by status |
+### ➕ Register
+- Go to `/register/`
+- Fill in your username, email, and password
+- Click `Register`
 
----
+### 🔐 Login
+- Go to `/login/`
+- Enter your credentials and log in
+- You will be redirected to the dashboard
 
-## ⚠️ Important Notes
-
-- ❌ Passwords are stored as **plain text**, which is highly insecure.
-  - ✅ **Use `set_password()` and `check_password()`** methods from Django for real applications.
-- ❌ No CSRF protection for some `POST` routes like `add_task`, `edit_task`.
-  - ✅ Include `{% csrf_token %}` in forms and ensure proper decorators.
+### 🚪 Logout
+- Click the `Logout` link or go to `/logout/`
 
 ---
 
-## 💡 Setup Instructions
+## 👤 Profile Management
 
-```bash
-# Clone the repository
-git clone <repo-url>
+### 📝 View/Update Profile
+- Go to `/profile/`
+- Your basic info will be shown
+- To update, click `Edit` and submit the form
 
-# Navigate into the project directory
-cd project
+---
 
-# Create and activate a virtual environment (optional)
-python -m venv env
-source env/bin/activate  # For Linux/macOS
-env\Scripts\activate     # For Windows
+## 🔐 Security Settings
 
-# Install dependencies
-pip install django
+### 🔄 Update Security Info
+- Go to `/load_security_content/` to view current info
+- Use `/update_security/` to update your password or security details
 
-# Run migrations
-python manage.py migrate
+---
 
-# Start the development server
-python manage.py runserver
+## 📋 Task Management
+
+### ➕ Add a Task
+- Go to `/tasks/add/`
+- Enter title, description, due date, category, and status
+- Click `Save`
+
+### 📝 Edit a Task
+- Go to `/tasks/edit/<task_id>/`
+- Modify task details and submit
+
+### ❌ Delete a Task
+- Go to `/tasks/delete/<task_id>/`
+- Confirm to delete the task permanently
+
+---
+
+## 🗂️ Task Filtering
+
+### 📁 By Category
+- Go to `/tasks/load/<category>/` (e.g. `/tasks/load/work/`)
+- View only tasks from the selected category
+
+### 🚦 By Status
+- Go to `/tasks/status/<status>/` (e.g. `/tasks/status/pending/`)
+- Filter tasks by their status
+
+---
+
+## 🧑‍💻 Developer Info (Optional Section)
+- Framework: Django
+- Frontend: HTML, CSS, JS (with optional AJAX)
+- Database: SQLite (default, can be switched)
+- Compatible with Python 3.x
+
+---
+
+## 🆘 Need Help?
+If something isn’t working, you can:
+- Check console logs or Django error logs
+- Make sure you’ve run all migrations (`python manage.py migrate`)
+- Run the server using: `python manage.py runserver`

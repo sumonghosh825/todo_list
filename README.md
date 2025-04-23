@@ -28,7 +28,53 @@ This is a full-featured task management system built using Django. It includes u
 
 ## 📁 Project Structure
 
-project/ │ ├── app/ │ ├── views.py │ ├── urls.py │ ├── models.py │ └── templates/ │ ├── authentication/ │ │ ├── login.html │ │ └── register.html │ ├── index.html │ ├── profile.html │ ├── profile_modal.html │ ├── security_modal.html │ ├── task.html │ ├── task_category.html │ └── task_status.html │ ├── manage.py └── README.md
+todo_project/
+├── manage.py
+├── db.sqlite3
+├── requirements.txt
+├── README.md
+├── .gitignore
+│
+├── todo_project/                     # Main Django project config
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py                       # Include your app URLs here
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── todo_app/                         # Your main app for todo management
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py                     # UserProfile, Task models
+│   ├── views.py                      # All your views: auth, tasks, profile, etc.
+│   ├── forms.py                      # Django Forms for login, profile, task
+│   ├── urls.py                       # The one you showed me
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── home.html
+│   │   ├── register.html
+│   │   ├── login.html
+│   │   ├── profile/
+│   │   │   ├── profile.html
+│   │   │   └── update_form.html
+│   │   ├── security/
+│   │   │   ├── security.html
+│   │   │   └── update_form.html
+│   │   └── tasks/
+│   │       ├── tasks.html
+│   │       ├── add_task.html
+│   │       ├── edit_task.html
+│   │       └── task_list_partial.html  # AJAX task list load
+│   ├── static/
+│   │   ├── css/
+│   │   │   └── style.css
+│   │   ├── js/
+│   │   │   └── tasks.js                # Optional AJAX logic
+│   │   └── images/
+│   └── migrations/
+│       └── __init__.py
+
 
 
 ---

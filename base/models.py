@@ -34,3 +34,36 @@ class UserAttributes(models.Model):
     def __str__(self):
         return self.user.username
 
+class Task(models.Model):
+    name = models.CharField(max_length=255)
+    date = models.DateField(blank=True, null=True)
+    status = models.BooleanField(default=True)
+
+    collaboration = models.CharField(max_length=100, primary_key=True, unique=True)
+    project = models.CharField(max_length=100)
+    
+    CATEGORY_CHOICES = [
+        ('Work', 'Work'),
+        ('Personal', 'Personal'),
+        ('Urgent', 'Urgent'),
+    ]
+    category = models.CharField(max_length=100, choices=CATEGORY_CHOICES, default="Personal")
+    priority = models.IntegerField(default=1)
+
+    assigned_by = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="assigned_tasks"
+    )
+    assigned_to = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="assigned_tasks_to"
+    )
+
+    def __str__(self):
+        return self.name

@@ -29,7 +29,7 @@
 
             
             <!-- ========== Topbar Start ========== -->
-            {% include 'component/timeline_rightside.html' %}
+            {% include 'component/timeline_topbar.html' %}
             <!-- ========== Topbar End ========== -->
 
             <!-- ========== Left Sidebar Start ========== -->
@@ -64,7 +64,7 @@
                         </div>
                         <!-- end page title -->
 
-                        {% include 'component/timeline_leftside.html' %}    
+                          
                 <!-- Footer Start -->
                 <footer class="footer">
                     <div class="container-fluid">
@@ -782,10 +782,10 @@
         </div>
 
         <!-- Vendor js -->
-        <script src="assets/js/vendor.min.js"></script>
+        <script src="{% static 'assets/js/vendor.min.js' %}"></script>
         
         <!-- App js -->
-        <script src="assets/js/app.min.js"></script>
+        <script src="{% static 'assets/js/app.min.js' %}"></script>
 
     </body>
 </html>
